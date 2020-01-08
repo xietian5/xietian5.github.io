@@ -1,0 +1,15 @@
+flask响应二维码图片
+----------------------------------
+from io import bytesIO
+from flask import send_file
+import qrcode
+
+@route...
+def ...():
+	out = bytesIO()
+	qr = qrcode.make('123')
+
+	qr.save(out, 'png')
+	out.seek(0)
+
+	return send_file(out, mimetype='image/png', cache_timeout=0)
